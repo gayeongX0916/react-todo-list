@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+.todo-list {
+  width: 640px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.todo-list-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.todo-input {
+  display: flex;
+  column-gap: 10px;
+}
+
+.todo-input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.todo-input button {
+  width: 45px;
+  height: 50px;
+  background-color: rgb(154, 225, 249);
+  border: none;
+  color: rgb(54, 56, 167);
+  cursor: pointer;
+}
+
+.todo-title{
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
