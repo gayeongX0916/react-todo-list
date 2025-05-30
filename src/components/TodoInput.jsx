@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useTodoActionState } from "../context/TodoActionContext";
 
-const TodoInput = ({ handleAddTodo }) => {
+const TodoInput = () => {
   const [value, setValue] = useState("");
+  const { handleAddTodo } = useTodoActionState();
 
   const handleonClick = () => {
     if (value.trim() === "") return;

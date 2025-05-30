@@ -1,6 +1,11 @@
+import { useTodoActionState } from "../context/TodoActionContext";
+import { useTodoState } from "../context/TodoStateContext";
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ todos, onToggle, onEdit, onDelete }) => {
+const TodoList = () => {
+  const todos = useTodoState();
+  const { handleToggle, handleEditTodo, handleDeleteTodo } =
+    useTodoActionState();
   return (
     <>
       <section className="todo-list-item">
@@ -11,9 +16,9 @@ const TodoList = ({ todos, onToggle, onEdit, onDelete }) => {
             <TodoItem
               key={todo.id}
               todo={todo}
-              onToggle={onToggle}
-              onEdit={onEdit}
-              onDelete={onDelete}
+              onToggle={handleToggle}
+              onEdit={handleEditTodo}
+              onDelete={handleDeleteTodo}
             />
           ))}
       </section>
@@ -25,9 +30,9 @@ const TodoList = ({ todos, onToggle, onEdit, onDelete }) => {
             <TodoItem
               key={todo.id}
               todo={todo}
-              onToggle={onToggle}
-              onEdit={onEdit}
-              onDelete={onDelete}
+              onToggle={handleToggle}
+              onEdit={handleEditTodo}
+              onDelete={handleDeleteTodo}
             />
           ))}
       </section>
