@@ -1,9 +1,12 @@
 import { TodoStateContext } from "./TodoStateContext";
 import { TodoActionContext } from "./TodoActionContext";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 const TodoProvider = ({ children }) => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const saved = localStorage.getItem("todos");
+    return saved ? JSON.parse(saved) : [];
+  });
 
   const handleAddTodo = useCallback((value) => {
     const newTodo = {
@@ -36,6 +39,10 @@ const TodoProvider = ({ children }) => {
     () => ({ handleAddTodo, handleToggle, handleEditTodo, handleDeleteTodo }),
     [handleAddTodo, handleToggle, handleEditTodo, handleDeleteTodo]
   );
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <TodoStateContext.Provider value={todos}>
