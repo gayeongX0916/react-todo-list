@@ -1,0 +1,36 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.todo-text {
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.todo-text-input {
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+.todo-text.done {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.todo-button-container {
+  display: flex;
+  column-gap: 7px;
+  padding: 3px 0px;
+}
+
+.todo-button-container button {
+  border: none;
+  width: 50px;
+  height: 33px;
+  border-radius: 4px;
+  cursor: pointer;
+}
