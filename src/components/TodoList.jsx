@@ -6,36 +6,31 @@ const TodoList = () => {
   const todos = useTodoState();
   const { handleToggle, handleEditTodo, handleDeleteTodo } =
     useTodoActionState();
+
+  const renderTodoList = (title, items) => (
+    <section>
+      <h2 className="todo-title">{title}</h2>
+      {items.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          onToggle={handleToggle}
+          onEdit={handleEditTodo}
+          onDelete={handleDeleteTodo}
+        />
+      ))}
+    </section>
+  );
   return (
     <>
-      <section className="todo-list-item">
-        <div className="todo-title">할 일</div>
-        {todos
-          .filter((todo) => !todo.done)
-          .map((todo) => (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              onToggle={handleToggle}
-              onEdit={handleEditTodo}
-              onDelete={handleDeleteTodo}
-            />
-          ))}
-      </section>
-      <section className="todo-check">
-        <div className="todo-title">완료된 항목</div>
-        {todos
-          .filter((todo) => todo.done)
-          .map((todo) => (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              onToggle={handleToggle}
-              onEdit={handleEditTodo}
-              onDelete={handleDeleteTodo}
-            />
-          ))}
-      </section>
+      {renderTodoList(
+        "할 일",
+        todos.filter((todo) => !todo.done)
+      )}
+      {renderTodoList(
+        "완료된 항목",
+        todos.filter((todo) => todo.done)
+      )}
     </>
   );
 };
